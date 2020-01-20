@@ -1,14 +1,19 @@
 {
-  "posts": [
-    { "id": 1, "title": "Post 1" },
-    { "id": 2, "title": "Post 2" },
-    { "id": 3, "title": "Post 3" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 },
-    { "id": 2, "body": "some comment", "postId": 1 }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  "dinners": [
+    {
+      "date": "01-01-2020",
+      "dinner": "Lemon garlic shrimp spaghetti",
+      "diet": "Fish"
+    },
+    {
+      "date": "02-01-2020",
+      "dinner": "IP - Bean and vegetable chili",
+      "diet": "Vegetarian"
+    },
+    {
+      "date": "03-01-2020",
+      "dinner": "IP - Paella",
+      "diet": "Meat"
+    }
+  ]
 }
