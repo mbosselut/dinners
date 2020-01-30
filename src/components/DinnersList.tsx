@@ -1,10 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 
-interface Dinner {
-  date: Date;
-  meal: String;
-  diet: String;
+export interface Dinner {
+  date: string;
+  meal: string;
+  diet: string;
 }
 interface DinnerListProps {
   dinners: Dinner[];
@@ -13,10 +13,8 @@ interface DinnerListProps {
 type DinnersListRender = JSX.Element;
 
 const dinnersList = (props: DinnerListProps): JSX.Element => {
-  console.log(props.dinners);
   const DinnersListRender: DinnersListRender[] = props.dinners.map(
     (dinner: Dinner, index: number): JSX.Element => {
-      console.log(dinner.date);
       const date = moment(dinner.date).format('DD MM YYYY');
       return (
         <tr key={index}>
@@ -27,7 +25,6 @@ const dinnersList = (props: DinnerListProps): JSX.Element => {
       );
     }
   );
-  console.log(typeof DinnersListRender);
   return (
     <div>
       <table>
