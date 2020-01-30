@@ -2,17 +2,17 @@
   "dinners": [
     {
       "date": "01-01-2020",
-      "dinner": "Lemon garlic shrimp spaghetti",
+      "meal": "Lemon garlic shrimp spaghetti",
       "diet": "Fish"
     },
     {
       "date": "02-01-2020",
-      "dinner": "IP - Bean and vegetable chili",
+      "meal": "IP - Bean and vegetable chili",
       "diet": "Vegetarian"
     },
     {
       "date": "03-01-2020",
-      "dinner": "IP - Paella",
+      "meal": "IP - Paella",
       "diet": "Meat"
     }
   ]
