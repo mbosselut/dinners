@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 export interface Dinner {
+  id: number;
   date: string;
   meal: string;
   diet: string;

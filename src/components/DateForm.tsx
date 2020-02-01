@@ -1,19 +1,19 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, FormEventHandler } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DateForm = (): JSX.Element => {
+interface DateFormProps {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>, startDate: any) => void;
+}
+
+const DateForm = (props: DateFormProps): JSX.Element => {
   const [startDate, setStartDate] = useState<any>(new Date());
   const handleChange = (date: Date) => {
     setStartDate(date);
   };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-  };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={props.handleSubmit(event, startDate)}>
         <div className="form-group">
           <label>Select Date: </label>
           <DatePicker

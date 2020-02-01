@@ -1,18 +1,27 @@
 {
   "dinners": [
     {
+      "id": "1",
       "date": "01-01-2020",
       "meal": "Lemon garlic shrimp spaghetti",
       "diet": "Fish"
     },
     {
+      "id": "2",
       "date": "02-01-2020",
       "meal": "IP - Bean and vegetable chili",
       "diet": "Vegetarian"
     },
     {
+      "id": "3",
       "date": "03-01-2020",
       "meal": "IP - Paella",
+      "diet": "Meat"
+    },
+    {
+      "id": "38",
+      "date": "2020-01-22T16:22:33.000Z",
+      "meal": "Pad thai",
       "diet": "Meat"
     }
   ]
