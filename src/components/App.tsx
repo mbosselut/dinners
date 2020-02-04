@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 import DateForm from './DateForm';
 import DinnersList from './DinnersList';
 import { Dinner } from './DinnersList';
@@ -10,27 +10,10 @@ import request from 'superagent';
 //   { date: '02-01-2020', meal: 'Ribs', diet: 'Meat' }
 // ];
 
-// Previous attempt using a custom hook instead of having useEffect inside the component
-// const useDinners = () => {
-//   // const [dinners, setDinners] = useState([]);
-
-//   useEffect(() => {
-//     console.log('USE EFFECT');
-//     request
-//       .get('http://localhost:3004/dinners')
-//       .then(res => {
-//         setDinners(res.body);
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//   }, []);
-
-//   return dinners;
-// };
-
 const App: React.FC = (): JSX.Element => {
   const [startDate, setStartDate] = useState<any>(new Date());
+  const [meal, setMeal] = useState<string>('');
+  const [diet, setDiet] = useState<string>('Omnivore');
   const [dinners, setDinners] = useState<Array<Dinner>>([]);
 
   useEffect(() => {
@@ -45,18 +28,29 @@ const App: React.FC = (): JSX.Element => {
       });
   }, []);
 
-  const handleChange = (date: Date) => {
+  const handleChangeDate = (date: Date): void => {
     setStartDate(date);
     console.log('startDate', startDate);
   };
 
-  const addNewDinner = (event: FormEvent<HTMLFormElement>) => {
+  const handleChangeInput = (item: ChangeEvent<HTMLFormElement>): void => {
+    switch (item.target.name) {
+      case 'meal':
+        setMeal(item.target.value);
+        break;
+      case 'diet':
+        setDiet(item.target.value);
+        break;
+    }
+  };
+
+  const addNewDinner = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const newDinner = {
-      id: '41',
+      id: Math.floor(Math.random() * Math.floor(1000)).toString(),
       date: startDate,
-      meal: 'Pad thai',
-      diet: 'Meat'
+      meal: meal,
+      diet: diet
     };
     request
       .post('http://localhost:3004/dinners')
@@ -74,8 +68,9 @@ const App: React.FC = (): JSX.Element => {
     <div>
       <DateForm
         handleSubmit={addNewDinner}
-        handleChange={handleChange}
+        handleChangeDate={handleChangeDate}
         startDate={startDate}
+        handleChangeInput={handleChangeInput}
       />
       <DinnersList dinners={dinners} />
     </div>

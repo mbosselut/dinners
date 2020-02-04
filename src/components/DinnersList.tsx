@@ -7,13 +7,14 @@ export interface Dinner {
   meal: string;
   diet: string;
 }
+
 interface DinnerListProps {
   dinners: Dinner[];
 }
 
 type DinnersListRender = JSX.Element;
 
-const dinnersList = (props: DinnerListProps): JSX.Element => {
+const DinnersList = (props: DinnerListProps): JSX.Element => {
   const DinnersListRender: DinnersListRender[] = props.dinners.map(
     (dinner: Dinner, index: number): JSX.Element => {
       const date = moment(dinner.date).format('DD MM YYYY');
@@ -42,4 +43,4 @@ const dinnersList = (props: DinnerListProps): JSX.Element => {
   );
 };
 
-export default dinnersList;
+export default DinnersList;
