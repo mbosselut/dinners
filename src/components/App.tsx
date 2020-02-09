@@ -1,4 +1,5 @@
 import React, { useState, useEffect, FormEvent, ChangeEvent } from 'react';
+import '.././index.css';
 import DateForm from './DateForm';
 import DinnersList from './DinnersList';
 import { Dinner } from './DinnersList';
@@ -19,7 +20,7 @@ const App: React.FC = (): JSX.Element => {
   useEffect(() => {
     console.log('USE EFFECT IS CALLED');
     request
-      .get('http://localhost:3004/dinners')
+      .get('https://dinners-api.herokuapp.com/dinner')
       .then(res => {
         setDinners(res.body);
       })
@@ -53,7 +54,7 @@ const App: React.FC = (): JSX.Element => {
       diet: diet
     };
     request
-      .post('http://localhost:3004/dinners')
+      .post('https://dinners-api.herokuapp.com/dinner')
       .send(newDinner)
       .then(res => {
         console.log('ADDING A NEW DINNER TO DB', res.body);
