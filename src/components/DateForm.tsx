@@ -20,6 +20,7 @@ const DateForm = (props: DateFormProps): JSX.Element => {
             onChange={props.handleChangeDate}
             name="startDate"
             dateFormat="dd/MM/yyyy"
+            required
           />
           <label htmlFor="meal">Meal name :</label>
 
@@ -28,6 +29,7 @@ const DateForm = (props: DateFormProps): JSX.Element => {
             name="meal"
             placeholder="Meal name"
             onChange={props.handleChangeInput}
+            required
           ></input>
           <label htmlFor="diet">Meal diet :</label>
 
@@ -35,6 +37,7 @@ const DateForm = (props: DateFormProps): JSX.Element => {
             name="diet"
             onChange={props.handleChangeInput}
             defaultValue="Omnivore"
+            required
           >
             <option value="Omnivore">Omnivore</option>
             <option value="Vegetarian">Vegetarian</option>

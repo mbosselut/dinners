@@ -19,7 +19,7 @@ const App: React.FC = (): JSX.Element => {
   const [meal, setMeal] = useState<string>('');
   const [diet, setDiet] = useState<string>('Omnivore');
   const [dinners, setDinners] = useState<Array<Dinner>>([]);
-  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     console.log('USE EFFECT IS CALLED');
@@ -65,15 +65,16 @@ const App: React.FC = (): JSX.Element => {
         const updatedDinners: Dinner[] = [...dinners];
         updatedDinners.push(newDinner);
         setDinners(updatedDinners);
+        setMessage('Dinner added !');
       })
-      .catch(handlePostResponse);
+      .catch(handlePostError);
   };
 
-  function handlePostResponse(response: any) {
-    setError('Sorry, a dinner already exists at this date');
+  function handlePostError(response: any) {
+    setMessage('Sorry, a dinner already exists at this date');
   }
 
-  const errorMessage = error ? <p>{error}</p> : null;
+  const feedbackMessage = message ? <p>{message}</p> : null;
 
   return (
     <div>
@@ -83,7 +84,7 @@ const App: React.FC = (): JSX.Element => {
         startDate={startDate}
         handleChangeInput={handleChangeInput}
       />
-      {errorMessage}
+      {feedbackMessage}
       <DinnersList dinners={dinners} />
     </div>
   );
