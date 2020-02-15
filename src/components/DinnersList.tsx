@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import Table from 'react-bootstrap/Table';
 
 export interface Dinner {
   id: string;
@@ -29,16 +30,16 @@ const DinnersList = (props: DinnerListProps): JSX.Element => {
   );
   return (
     <div>
-      <table>
+      <Table striped bordered hover size="sm" id="dinnersTable">
         <tbody>
           <tr>
-            <th>Date</th>
-            <th>Meal</th>
+            <th id="dateColumn">Date</th>
+            <th id="mealColumn">Meal</th>
             <th>Diet</th>
           </tr>
           {DinnersListRender}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };

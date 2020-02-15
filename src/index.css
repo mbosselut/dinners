@@ -1,3 +1,15 @@
 body {
   /* color: red; */
 }
+
+#dinnersTable {
+  max-width: 1000px;
+}
+
+#dateColumn {
+  width: 10%;
+}
+
+#mealColumn {
+  width: 60%;
+}

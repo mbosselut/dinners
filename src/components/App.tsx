@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 import '.././index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import DateForm from './DateForm';
 import DinnersList from './DinnersList';
 import { Dinner } from './DinnersList';
@@ -10,6 +11,8 @@ import request from 'superagent';
 //   { date: '01-01-2020', meal: 'Pasta', diet: 'Vegetarian' },
 //   { date: '02-01-2020', meal: 'Ribs', diet: 'Meat' }
 // ];
+const url = 'http://localhost:4000/dinner';
+// const url = 'https://dinners-api.herokuapp.com/dinner';
 
 const App: React.FC = (): JSX.Element => {
   const [startDate, setStartDate] = useState<any>(new Date());
@@ -20,7 +23,7 @@ const App: React.FC = (): JSX.Element => {
   useEffect(() => {
     console.log('USE EFFECT IS CALLED');
     request
-      .get('https://dinners-api.herokuapp.com/dinner')
+      .get(url)
       .then(res => {
         setDinners(res.body);
       })
@@ -54,7 +57,7 @@ const App: React.FC = (): JSX.Element => {
       diet: diet
     };
     request
-      .post('https://dinners-api.herokuapp.com/dinner')
+      .post(url)
       .send(newDinner)
       .then(res => {
         console.log('ADDING A NEW DINNER TO DB', res.body);
